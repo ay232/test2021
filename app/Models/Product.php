@@ -10,5 +10,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
-    //
+    protected $fillable=['title','price','eld'];
+
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }
