@@ -43,7 +43,7 @@ class ProductChangedMail extends Mailable
             ->view('mail.product-changed')
             ->with([
                 'product' => $this->product,
-                'action' => $this->action
+                'action' => $this->action,
             ]);
     }
 }

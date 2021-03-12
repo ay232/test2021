@@ -1,59 +1,54 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+### Установка
+####Выполните последовательно необходимые команды.  
+######Для клонирования проекта из репозитория:
+`git clone http://github.com/ay232/test2021/ .`
+######Установите зависимости
+`composer install`  
+######Настройте среду и данные
+`php artisan storage:link`  
+`php artisan migrate:fresh --seed`
 
-## About Laravel
+####Импорт файлов *.json согласно ТЗ
+`php artisan read:json`  
+#####Пути файлов  
+* *storage/app/public/categories.json*
+* *storage/app/public/products.json*  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Файлы специально были добавлены в репозиторий.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+###Тестирование задания
+Задание выполнено исходя из обращения к функциям программы через API.  
+Для удобства использования создана и опубликована коллекция postman.  
+URL: https://www.getpostman.com/collections/5b8d58e98f07075ccbcd  
+Для тестирования сайта ему был назначен адрес: http://test2021.loc.
+###Документация на API
+####Доступ к API
+**Bearer** *UYqKfnFVEddt6ZunWpQPN7lYu1eZK37F0a0l5RCfBxeJMMsstTjBQYEO7mE4*
+####Product
+#####Список продуктов
+**GET**: test2021.loc/api/product/  
+**Ответ**: JSON  
+#####Карточка продукта
+**GET**: test2021.loc/api/product/{id}  
+**Ответ**: JSON  
+#####Создать новый продукт
+**POST**: test2021.loc/api/product/  
+**Ответ**: JSON  
+#####Изменить продукт
+**PUT**: test2021.loc/api/product/{id}  
+**Ответ**: JSON  
+#####Удалить продукт
+**DELETE**: test2021.loc/api/product/{id}  
+**Ответ**: JSON
+#######Примечания к работе
+* V1 в адрес API не добавлялось, т.к. других версий не предполагается.
+* Контроллер Category не создавался, т.к. его не было в ТЗ
+* Вероятно в ТЗ имеется опечатка в файле categories.json - 
+там в json данных слово CategoriesEId и CategoryEId написаны по разному.
+Возможно, это фишка для валидации или ошибка, однако **в консольной команде
+сделана обработка обоих возможных значений** как валидных.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+####Спасибо за внимание!
+#####Буду признателен за code review на ay232@ya.ru

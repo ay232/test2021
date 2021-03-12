@@ -5,9 +5,14 @@ namespace App\Repositories;
 
 use App\Models\Product;
 use Illuminate\Validation\Rule;
+use Request;
 
 class ProductRepository extends BaseRepository
 {
+    /**
+     * ProductRepository constructor.
+     * @param Product|null $model
+     */
     public function __construct(Product $model = null)
     {
         if (!$model) {
@@ -17,23 +22,33 @@ class ProductRepository extends BaseRepository
 
     }
 
+    /**
+     * @param $data
+     * @return \Illuminate\Database\Eloquent\Model
+     */
     public function getJustCreatedModel($data)
     {
         $category = app(Product::class);
         return $category->params($data)->orderByDesc('id')->first();
     }
 
+    /**
+     * @return array
+     */
     public function getValidationRules()
     {
         return [
             'id' => ['integer', 'exists:products,id',
-                     Rule::requiredIf(\Request::method() != "POST" and \Request::method() != "GET")],
-            'title' => ['string', 'between:3,12', Rule::requiredIf(\Request::method() == "POST")],
+                     Rule::requiredIf(Request::method() != "POST" and Request::method() != "GET")],
+            'title' => ['string', 'between:3,12', Rule::requiredIf(Request::method() == "POST")],
             'price' => ['numeric', 'between:0,200'],
             'eld' => ['integer', 'nullable'],
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getValidationMessages()
     {
         return [

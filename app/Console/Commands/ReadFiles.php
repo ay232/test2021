@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Exceptions\ValidationException;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
@@ -53,11 +54,11 @@ class ReadFiles extends Command
     public function handle()
     {
         $this->info('Начинаем читать файл categories.json');
-        if (!Storage::disk('public')->exists('categories.json')){
+        if (!Storage::disk('public')->exists('categories.json')) {
             $this->error('Ошибка: файл categories.json не найден');
-        }else{
+        } else {
             $file = Storage::disk('public')->get('categories.json');
-            $data = json_decode($file,true);
+            $data = json_decode($file, true);
             if ($data) {
                 $line = 1;
                 foreach ($data as $category) {
@@ -69,22 +70,22 @@ class ReadFiles extends Command
                     }
                     $line++;
                 }
-            }else{
+            } else {
                 $this->error('Не удалось распарсить данные из файла');
             }
         }
 
         $this->info('Начинаем читать файл products.json');
-        if (!Storage::disk('public')->exists('products.json')){
+        if (!Storage::disk('public')->exists('products.json')) {
             $this->error('Ошибка: файл products.json не найден');
-        }else{
+        } else {
             $file = Storage::disk('public')->get('products.json');
-            $data = json_decode($file,true);
+            $data = json_decode($file, true);
             if ($data) {
                 $line = 1;
                 foreach ($data as $product) {
                     try {
-                        $createdProduct = $this->prodRepo->create(Arr::only($product,['eId','title','price']));
+                        $createdProduct = $this->prodRepo->create(Arr::only($product, ['eId', 'title', 'price']));
                         $this->info("Строка {$line} прочитана успешно");
                         try {
                             if (Arr::has($product, 'categoriesEId') or Arr::has($product, 'categoryEId')) {
@@ -92,7 +93,7 @@ class ReadFiles extends Command
                                 $this->warn('Добавляем связи с категориями для товара ID: ' . implode(",", $categories));
                                 $createdProduct->categories()->attach($categories);
                             }
-                        } catch (\Exception $e){
+                        } catch (Exception $e) {
                             $this->warn('Не удалось установить связи!');
                         }
                     } catch (ValidationException $e) {
@@ -101,7 +102,7 @@ class ReadFiles extends Command
 
                     $line++;
                 }
-            }else{
+            } else {
                 $this->error('Не удалось распарсить данные из файла');
             }
         }

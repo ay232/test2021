@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Repositories\BaseRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Validation\Rule;
 
 class BaseApiController extends Controller
 {
@@ -17,9 +16,6 @@ class BaseApiController extends Controller
     {
         $this->repository = $repository;
     }
-
-
-
 
     /**
      * @param $result

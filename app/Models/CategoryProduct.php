@@ -13,7 +13,10 @@ class CategoryProduct extends Pivot
     /**
      * @var bool
      */
-    protected $fillable = ['category_id','product_id'];
+    protected $fillable = ['category_id', 'product_id'];
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
 }

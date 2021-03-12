@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 use App\Exceptions\ValidationException;
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 abstract class BaseRepository
 {
@@ -79,7 +79,7 @@ abstract class BaseRepository
     /**
      * @param $id
      * @return mixed
-     * @throws \Exception
+     * @throws Exception
      */
     public function findOrFail($id)
     {
@@ -95,7 +95,7 @@ abstract class BaseRepository
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection|Model[]
+     * @return Collection|Model[]
      */
     public function all()
     {
