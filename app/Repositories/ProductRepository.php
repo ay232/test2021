@@ -17,6 +17,12 @@ class ProductRepository extends BaseRepository
 
     }
 
+    public function getJustCreatedModel($data)
+    {
+        $category = app(Product::class);
+        return $category->params($data)->orderByDesc('id')->first();
+    }
+
     public function getValidationRules()
     {
         return [

@@ -32,15 +32,6 @@ abstract class BaseRepository
         return $this->model;
     }
 
-    /**
-     * @param $data
-     * @return Model
-     */
-    public function create(array $data)
-    {
-        $this->validateData($data);
-        return $this->model->create($data);
-    }
 
     /**
      * @param $data
@@ -62,19 +53,15 @@ abstract class BaseRepository
     }
 
     /**
-     * @return array
+     * @param $data
+     * @return Model
      */
-    public function getValidationRules()
+    public function create(array $data)
     {
-        return [];
-    }
-
-    /**
-     * @return array
-     */
-    public function getValidationMessages()
-    {
-        return [];
+        $this->validateData($data);
+        $this->model->create($data);
+        $result = $this->getJustCreatedModel($data);
+        return $result;
     }
 
     /**
@@ -114,4 +101,30 @@ abstract class BaseRepository
     {
         return $this->model->all();
     }
+
+    /**
+     * @param $data
+     * @return Model
+     */
+    public function getJustCreatedModel($data)
+    {
+        return null;
+    }
+
+    /**
+     * @return array
+     */
+    public function getValidationRules()
+    {
+        return [];
+    }
+
+    /**
+     * @return array
+     */
+    public function getValidationMessages()
+    {
+        return [];
+    }
+
 }

@@ -43,8 +43,8 @@ class ProductController extends BaseApiController
     public function create()
     {
         try{
-            $this->repository->create($this->request->all());
-            return $this->sendResponse(new ProductResource($this->repository->getInstance()));
+            $result = $this->repository->create($this->request->all());
+            return $this->sendResponse(new ProductResource($result));
         }catch (ValidationException $e){
             return $this->sendError($e->getValidationErrors(),$e->getMessage());
         }

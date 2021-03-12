@@ -56,10 +56,22 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'ay232@ya.ru'),
+        'name' => env('MAIL_FROM_NAME', 'Laravel service'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Global "Notification" Address
+    |--------------------------------------------------------------------------
+    |
+    |Глобальный адрес для уведомлений, задаётся в env
+    |
+    */
+    'admin-contacts' => [
+        'address' => env('MAIL_ADMIN_NOTIFICATION', 'ay232@ya.ru'),
+        'name' => 'Administrator',
+    ],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

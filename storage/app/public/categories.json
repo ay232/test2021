@@ -1,5 +1,14 @@
 [
-  {"eld": 1,"title": "Category 1"},
-  {"eld": 2,"title": "Category 2"},
-  {"eld": 2,"title": "Category 33333333"},
+  {
+    "eld": 1,
+    "title": "Category 1"
+  },
+  {
+    "eld": 2,
+    "title": "Category 2"
+  },
+  {
+    "eld": 2,
+    "title": "Category 33333333"
+  }
 ]
