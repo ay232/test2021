@@ -23,11 +23,10 @@ eId (int|null)
 ##### 3. Реализовать консольную команду, которая читает два нижеприведенных файла Json и добавляет/обновляет записи в БД:
 
 ###### categories.json:
-`
-[  
+`[  
  {"eId": 1, "title": "Category 1"},  
  { "eId": 2,"title": "Category 2"},  
- { "eId": 2,"title": "Category 33333333"}  
+ { "eId": 2,"title": "Category 33333333"}    
 ]`
 
 ###### products.json
