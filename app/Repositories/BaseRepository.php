@@ -32,7 +32,6 @@ abstract class BaseRepository
         return $this->model;
     }
 
-
     /**
      * @param $data
      * @throws ValidationException
@@ -61,6 +60,7 @@ abstract class BaseRepository
         $this->validateData($data);
         $this->model->create($data);
         $result = $this->getJustCreatedModel($data);
+
         return $result;
     }
 
@@ -73,6 +73,7 @@ abstract class BaseRepository
         $this->validateData($data);
         $this->findOrFail($data['id']);
         $result = $this->model->update($data);
+
         return $this->findOrFail($data['id']);
     }
 
@@ -84,6 +85,7 @@ abstract class BaseRepository
     public function findOrFail($id)
     {
         $this->model = $this->model->findOrFail($id);
+
         return $this->model;
     }
 

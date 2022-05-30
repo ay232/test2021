@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Product;
 use Illuminate\Validation\Rule;
 use Request;
@@ -19,7 +18,6 @@ class ProductRepository extends BaseRepository
             $model = new Product();
         }
         parent::__construct($model);
-
     }
 
     /**

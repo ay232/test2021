@@ -11,6 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class ProductChangedMail extends Mailable
 {
     use Queueable, SerializesModels;
+
     /**
      * @var Product
      */
@@ -37,13 +38,13 @@ class ProductChangedMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): self
     {
         return $this->from(config('mail.from.address'))
             ->view('mail.product-changed')
             ->with([
                 'product' => $this->product,
-                'action' => $this->action,
+                'action'  => $this->action,
             ]);
     }
 }

@@ -21,22 +21,23 @@ class Category extends Model
     /**
      * @return BelongsToMany
      */
-    public function products()
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }
 
     /**
-     * @param $query
-     * @param $array
-     * @return mixed
+     * @param Builder $query
+     * @param array $array
+     * @return Builder
      */
-    public function scopeParams(Builder $query, $array)
+    public function scopeParams(Builder $query, array $array): Builder
     {
         $array = Arr::only($array, $this->fillable);
         foreach ($array as $key => $value) {
             $query = $query->where($key, $value);
         }
+
         return $query;
     }
 }

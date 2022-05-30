@@ -23,14 +23,14 @@ class BaseApiController extends Controller
      * @param int $httpStatusCode
      * @return JsonResponse
      */
-    public function sendResponse($result = null, $message = "Ok", $httpStatusCode = JsonResponse::HTTP_OK)
+    public function sendResponse($result = null, $message = "Ok", $httpStatusCode = JsonResponse::HTTP_OK): JsonResponse
     {
         $response = [
-            'data' => $result,
+            'data'    => $result,
             'success' => true,
             'message' => $message,
-            'errors' => null,
-            'code' => $httpStatusCode,
+            'errors'  => null,
+            'code'    => $httpStatusCode,
         ];
 
         return new JsonResponse($response, $httpStatusCode);
@@ -42,13 +42,13 @@ class BaseApiController extends Controller
      * @param int $httpStatusCode
      * @return JsonResponse
      */
-    public function sendError($errors = null, $message = '', $httpStatusCode = JsonResponse::HTTP_NOT_FOUND)
+    public function sendError($errors = null, $message = '', $httpStatusCode = JsonResponse::HTTP_NOT_FOUND): JsonResponse
     {
         $response = [
             'success' => false,
-            'data' => null,
+            'data'    => null,
             'message' => $message,
-            'errors' => $errors,
+            'errors'  => $errors,
         ];
 
         return new JsonResponse($response, $httpStatusCode);

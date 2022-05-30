@@ -14,7 +14,7 @@ class ValidationException extends Exception
 
     public function __construct($validationErrors)
     {
-        parent::__construct("Ошибка валидации", 0, null);
+        parent::__construct("Validation error", 0, null);
         $this->validationErrors = $validationErrors;
     }
 
@@ -25,5 +25,4 @@ class ValidationException extends Exception
     {
         return $this->validationErrors;
     }
-
 }

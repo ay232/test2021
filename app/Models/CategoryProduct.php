@@ -18,5 +18,4 @@ class CategoryProduct extends Pivot
      * @var bool
      */
     public $timestamps = false;
-
 }

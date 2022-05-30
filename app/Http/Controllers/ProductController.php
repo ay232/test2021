@@ -39,7 +39,7 @@ class ProductController extends BaseApiController
      * @param null $id
      * @return JsonResponse
      */
-    public function index($id = null)
+    public function index($id = null): JsonResponse
     {
         if ($id) {
             try {
@@ -50,16 +50,18 @@ class ProductController extends BaseApiController
         } else {
             $result = new ProductResourceCollection($this->repository->all());
         }
+
         return $this->sendResponse($result);
     }
 
     /**
      * @return JsonResponse
      */
-    public function create()
+    public function create(): JsonResponse
     {
         try {
             $result = $this->repository->create($this->request->all());
+
             return $this->sendResponse(new ProductResource($result));
         } catch (ValidationException $e) {
             return $this->sendError($e->getValidationErrors(), $e->getMessage());
@@ -69,10 +71,11 @@ class ProductController extends BaseApiController
     /**
      * @return JsonResponse
      */
-    public function update()
+    public function update(): JsonResponse
     {
         try {
             $result = $this->repository->update($this->request->all());
+
             return $this->sendResponse(new ProductResource($result));
         } catch (ValidationException $e) {
             return $this->sendError($e->getValidationErrors(), $e->getMessage());
@@ -82,10 +85,11 @@ class ProductController extends BaseApiController
     /**
      * @return JsonResponse
      */
-    public function destroy()
+    public function destroy(): JsonResponse
     {
         try {
             $this->repository->destroy($this->request->all());
+
             return $this->sendResponse();
         } catch (ValidationException $e) {
             return $this->sendError($e->getValidationErrors(), $e->getMessage());

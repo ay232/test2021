@@ -22,17 +22,18 @@ class Product extends Model
     /**
      * @return BelongsToMany
      */
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
 
-    public function scopeParams(Builder $query, $array)
+    public function scopeParams(Builder $query, array $array): Builder
     {
         $array = Arr::only($array, $this->fillable);
         foreach ($array as $key => $value) {
             $query = $query->where($key, $value);
         }
+
         return $query;
     }
 }
